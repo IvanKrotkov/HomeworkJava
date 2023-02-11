@@ -7,11 +7,11 @@
 ```Java 
 // Метод 
 static int TriangularNumber(int value){
-return (value*(value+1))/2;
+    return (value*(value+1))/2;
 }
 // Результат
 public static void main(String[] args) {
         int res = TriangularNumber(8);
         System.out.println(res);
-        }
+}
 ```
