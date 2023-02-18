@@ -1,26 +1,37 @@
-import java.io.File;
-import java.io.IOException;
-import java.lang.reflect.Array;
+import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.sql.Array;
 import java.util.Arrays;
+import java.util.List;
+import java.util.stream.IntStream;
+
 
 public class Semi2 {
     public static void main(String[] args) throws IOException {
-        int res = exponentiation(4,4);
-        fileReading();
-
+        String[] data = fileReading();
+        int[] values = searchDig(data);
+        int res = exponentiation(values[0],values[1]);
     }
     static int exponentiation(int a, int b){
         if(b==0) return 1;
         return a*exponentiation(a,b-1);
     }
     static String[] fileReading() throws IOException {
-        Path file = Path.of("C:/Users/krotk/OneDrive/Рабочий стол/HomeworkJava/Homework_GB/src/input.txt");
-        String[] fileArray = Files.readAllLines(file).toArray(new String[0]);
-//        System.out.println(Arrays.toString(fileArray));
-        return  fileArray;
+        File file = new File("C:/Users/krotk/OneDrive/Рабочий стол/HomeworkJava/Homework_GB/src/input.txt");
+        String[] fileReading = Files.readAllLines(file.toPath()).toArray(new String[0]);
+        return fileReading;
     }
 
+    static int[] searchDig(String[] arr){
+        int[] digital = new int[2];
+        int count = 0;
+        for (int i = 0; i < arr.length; i++) {
+            String[] arrayStr = arr[i].split(" ");
+            digital[count] = Integer.parseInt(arrayStr[1]);
+            count+=1;
+        }
+        return digital;
+    }
 
 }
