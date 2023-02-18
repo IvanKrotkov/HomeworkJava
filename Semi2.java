@@ -1,10 +1,6 @@
 import java.io.*;
 import java.nio.file.Files;
-import java.nio.file.Path;
-import java.sql.Array;
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.IntStream;
+
 
 
 public class Semi2 {
@@ -12,6 +8,7 @@ public class Semi2 {
         String[] data = fileReading();
         int[] values = searchDig(data);
         int res = exponentiation(values[0],values[1]);
+        writingResult(res);
     }
     static int exponentiation(int a, int b){
         if(b==0) return 1;
@@ -33,5 +30,9 @@ public class Semi2 {
         }
         return digital;
     }
-
+    static void writingResult (int res)throws IOException{
+        FileWriter file = new FileWriter("output.txt",false);
+        file.write(String.format("результат - %d",res));
+        file.flush();
+    }
 }
