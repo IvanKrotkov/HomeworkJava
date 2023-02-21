@@ -66,11 +66,8 @@ static void writingResult (int res)throws IOException{
         file.flush();
     }
 ```
-
-
-
-
-
+## Задание третьего семинара - [url](Semi3.java)
+*Реализовать алгоритм сортировки слиянием*
 
 
 
