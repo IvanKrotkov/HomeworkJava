@@ -68,7 +68,53 @@ static void writingResult (int res)throws IOException{
 ```
 ## Задание третьего семинара - [url](Semi3.java)
 *Реализовать алгоритм сортировки слиянием*
+1. Один метод рекурсивно делит массив пополам.
+```Java
+static void mergeSort(int[] input) {
+        if (input.length < 2){
+            return;
+        }
+        int len = input.length;
+        int[] lefttAr = new int[len/2];
+        System.arraycopy(input,0,lefttAr,0,len/2);
+        int[] rightAr = new int[len-len/2];
+        System.arraycopy(input,len/2 , rightAr,0, len - (len/2));
+        mergeSort(lefttAr);
+        mergeSort(rightAr);
+        merge(input,rightAr,lefttAr);
+    }
+```
+2. Второй метод сравнивает элементы разделённых массивов, наименьший записывает в исходный, до тех пор, 
+пока один из массивов не кончится
+```Java
+static void merge(int[] res, int[] rightAr, int[] lefttAr) {
+        int l = 0;
+        int r = 0;
+        int resUk = 0;
+        while (r<rightAr.length & l<lefttAr.length){
+            if(rightAr[r] <= lefttAr[l]){
+                res[resUk] = rightAr[r];
+                r++;
+                resUk++;
+            } else {
+                res[resUk] = lefttAr[l];
+                resUk++;
+                l++;
+            }
+        }
+        while (r<rightAr.length){
+            res[resUk] = rightAr[r];
+            r++;
+            resUk++;
+        }
+        while (l<lefttAr.length) {
+            res[resUk] = lefttAr[l];
+            resUk++;
+            l++;
+        }
 
+    }
+```
 
 
 
