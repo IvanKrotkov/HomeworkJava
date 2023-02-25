@@ -116,9 +116,44 @@ static void merge(int[] res, int[] rightAr, int[] lefttAr) {
     }
 ```
 # Задача четвёртого семинара - [URL](Semi4.java)
-*Реализовать алгоритм перамидальной сортировки*
+*Реализовать алгоритм пирамидальной сортировки*
 
+1. Построение двоичной кучи с помощью рекурсии
+```java
+static void createHeap(int[] arr, int len, int index) {
+        int max = index;
+        int left = 2 * index + 1;
+        int right = 2 * index + 2;
+        if (left < len && arr[left] > arr[max]) {
+            max = left;
+        }
+        if (right < len && arr[right] > arr[max]) {
+            max = right;
+        }
+        if (max != index) {
+            int temp = arr[index];
+            arr[index] = arr[max];
+            arr[max] = temp;
+            createHeap(arr, len, max);
+        }
+    }
+```
+2. Основная функция, выполняющая пирамидальную сортировку
+```java
+static void sorting(int[] arr) {
+        int len = arr.length;
+        for (int i = len / 2 - 1; i >= 0; i--) {
+            createHeap(arr, len, i);
+        }
+        for (int i = len - 1; i >= 0; i--) {
+            int temp = arr[0];
+            arr[0] = arr[i];
+            arr[i] = temp;
 
+            createHeap(arr, i, 0);
+        }
+    }
+```
 
 
 
