@@ -115,6 +115,9 @@ static void merge(int[] res, int[] rightAr, int[] lefttAr) {
 
     }
 ```
+# Задача четвёртого семинара - [URL](Semi4.java)
+*Реализовать алгоритм перамидальной сортировки*
+
 
 
 
